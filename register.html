@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+      <div class="login-form">
+        <h1>Бүртгүүлэх</h1>
+        
+        <div class="txtb">
+          <input id="user-mail-reg" type="text">
+          <span data-placeholder="Хэрэглэгчийн э-майл"></span>
+        </div>
+
+        <div class="txtb">
+          <input id="user-pass-reg" type="password">
+          <span data-placeholder="Нууц үг"></span>
+        </div>
+
+        <div class="txtb">
+            <input id="user-pass2-reg" type="password">
+            <span data-placeholder="Нууц үг давтах"></span>
+          </div>
+
+        <input id="lgnBtn" type="submit" class="logbtn" onclick="regBtn()" value="Бүртгүүлэх">
+
+        <div class="bottom-text">
+          
+        </div>
+
+        <script src="js/register.js"></script>
+      </div>
+
+      <script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+      </script>
+
+  </body>
+</html>

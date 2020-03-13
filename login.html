@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/loginstyle.css">
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+
+      <div class="login-form">
+        <h1>Нэвтрэх</h1>
+
+        <div class="txtb">
+          <input id="user-mail" type="text">
+          <span data-placeholder="Хэрэглэгчийн нэр"></span>
+        </div>
+
+        <div class="txtb">
+          <input id="user-pass" type="password">
+          <span data-placeholder="Нууц үг"></span>
+        </div>
+
+        <input id="lgnBtn" type="submit" class="logbtn" onclick="loginBtn()" value="Нэвтрэх">
+
+        <div class="bottom-text">
+          Та бүртгэлтэй юу? <a href="register.html">Бүртгүүлэх</a>
+        </div>
+
+        <script src="js/login.js"></script>
+      </div>
+
+      <script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+      </script>
+
+  </body>
+</html>

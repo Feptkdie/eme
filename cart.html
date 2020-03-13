@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>EME handmade shop</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <body>
+            <div id="nav">
+                <p class="emeText">EME handmade shop</p>
+                <img id="imgEme" src="images/emeLogo.png">
+                <a href="index.html">Дэлгүүр</a>
+                <a href="about.html">Бидний тухай</a>
+                <a href="contact.html">Холбоо барих</a>
+                <a id="user-login" class="uLgn" href="login.html">Нэвтрэх</a>
+                <a id="user-name" class="uName" href="profile.html"></a>
+                <img id="imgUser" src="images/user.png">
+                <a class="uCart" href="cart.html" >Таны сагс</a>
+                <img id="imgCart" src="images/cart.png">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div id="container">
+                <div id="shopping-cart-box1">
+                    <h3 id="h3Back">Таны сагс</h3>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Зураг</th>
+                                <th scope="col">Нэр</th>
+                                <th scope="col">Ширхэг</th>
+                                <th scope="col">Үнэ</th>
+                                <th scope="col">Болих</th>
+                            </tr>
+                        </thead>
+                        <thead id="cartTable">
+                        </thead>
+                    </table>
+                    <p>Худалдан авалт хийхэд бэлэн болсон бол баталгаажуулах товч дээр дарна уу.</p>
+                    <button id="checkOutBtn" onclick="checkOutBtn()">Баталгаажуулах</button>
+                </div>
+                <div id="shopping-cart-box">
+                    <h3 id="h3Back">Төлбөр төлөх хэсэг</h3>
+                    <p id="inlineP">Нийт үнэ : <p id="totalPrice"></p>₮</p>
+                    <p>Таныг дансаар төлбөрөө төлөх хүртэл шалгаж байдаг.</p>
+                    <p>Төлбөр төлөх дансны нэр : маргад-эрдэнэ</p>
+                    <p>Төлбөр төлөх дансны дугаар ХААН БАНК : 5692145827</p>
+                    <p>Гүйлгээний утга дээр утасны дугаараа бичих.</p>
+                    <p>Энэ бүгдийг хийсний дараа та Худалдаа хийх товч дээр даран шалгуулах хэрэгтэй.</p>
+                    <button id="buyBtn" onclick="buyBtn()">Худалдаа хийх</button>
+                </div>
+                <div id="shopping-cart-box3">
+                    <h3 id="h3Back">------</h3>
+                    <button id="waitBtn">Шалгаж байна</button>
+                    <p>Таныг дансаар төлбөрөө төлөх хүртэл шалгаж байдаг.</p>
+                    <p>Төлбөр төлөх дансны нэр : маргад-эрдэнэ</p>
+                    <p>Төлбөр төлөх дансны дугаар ХААН БАНК : 5692145827</p>
+                    <p>Гүйлгээний утга дээр утасны дугаараа бичих.</p>
+                </div>
+                <div id="shopping-cart-box4">
+                    <h3 id="h3Back">Хүргэлт</h3>
+                    <button id="doneBtn">Баталгаажсан</button>
+                    <p id="centerTxt">Таны төлбөр баталгаажсан тул та одоо хүлээх л үлдлээ.</p>
+                    <p>Холбоо барих утас : 90446462</p>
+                </div>
+            </div>
+            <script src="js/cart.js"></script>
+            <script>
+                function myFunction() {
+                var x = document.getElementById("nav");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+                }
+            </script>
+        </body>
+</html>

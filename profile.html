@@ -1,0 +1,54 @@
+
+<html>
+    <head>
+        <title>EME handmade shop</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <body>
+            <div id="nav">
+                <p class="emeText">EME handmade shop</p>
+                <img id="imgEme" src="images/emeLogo.png">
+                <a href="index.html">Дэлгүүр</a>
+                <a href="about.html">Бидний тухай</a>
+                <a href="contact.html">Холбоо барих</a>
+                <a id="admin-page-href" href="admin-page.html">Admin</a>
+                <a id="user-login" class="uLgn" href="login.html">Нэвтрэх</a>
+                <a id="user-name" class="uName" href="profile.html"></a>
+                <img id="imgUser" src="images/user.png">
+                <a class="uCart" href="cart.html" >Таны сагс</a>
+                <img id="imgCart" src="images/cart.png">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div id=container>
+                <div id="shopping-cart-box3">
+                    <h3 id="h3Back">------</h3>
+                    <p>Хэрэв та мэдээлэлээ солих гэж байгаа бол доорх цэнхэр товч дээр дарна уу.</p>
+                    <button id="waitBtn" onclick="goTo()">Солих</button>
+                    <p>Манайхаар үйлчлүүлсэнд баярлалаа.</p>
+                    <button id="deleteCartItem" onclick="signOut()">Гарах</button>
+                </div>
+                
+            </div>
+            <script>
+                function myFunction() {
+                var x = document.getElementById("nav");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+                }
+                function goTo(){
+                    window.location.href = "register-full.html";
+                }
+            </script>        
+            <script src="js/profile.js"></script>
+        </body>
+</html>

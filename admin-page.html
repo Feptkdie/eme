@@ -1,0 +1,221 @@
+
+<html>
+    <head>
+        <title>EME handmade shop</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <body>
+            <div id="nav">
+                <p class="emeText">EME handmade shop</p>
+                <img id="imgEme" src="images/emeLogo.png">
+                <a href="index.html">Дэлгүүр</a>
+                <a href="about.html">Бидний тухай</a>
+                <a href="contact.html">Холбоо барих</a>
+                <a id="user-login" class="uLgn" href="login.html">Нэвтрэх</a>
+                <a id="user-name" class="uName" href="profile.html"></a>
+                <img id="imgUser" src="images/user.png">
+                <a class="uCart" href="cart.html" >Таны сагс</a>
+                <img id="imgCart" src="images/cart.png">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div id="container">
+                <div id="shopping-cart-box">
+                    <h3 id="h3Back">Бараа нэмэх хэсэг</h3>
+                    <p style="font-size: 28px;">Барааны нэр:</p>
+                    <input type="text" id="product-title-admin" style="width: 100%; font-size: 38px;">
+                    <br>
+                    <p style="font-size: 28px;">Барааны тайлбар:</p>
+                    <textarea id="product-desc-admin" style="width: 100%; height: 300px; font-size: 28px;"></textarea>
+                    <br>
+                    <p style="font-size: 28px;">Барааны үнэ: ₮</p>
+                    <input type="text" id="product-price-admin" style="width: 100%; font-size: 18px;">
+                    <br>
+                    <p style="font-size: 28px;">Барааны тоо ширхэг:</p>
+                    <input type="text" id="product-amount-admin" style="width: 100%; font-size: 18px;">
+                    <br>
+                    <p style="font-size: 28px;">Бараа оруулсан он сар:</p>
+                    <input type="text" id="product-date-admin" style="width: 100%; font-size: 18px;">
+                    <br><br>
+                    <input type="file" value="upload" id="product-img-admin"/>
+                    <br><br>
+                    <progress value="0" max="100" id="uploader" style="width: 100%;">0%</progress>
+                    <button id="product-upload-admin" onclick="uploadPost()" style="width: 100%; height: 50px;">Нийтлэх</button>
+                    <br><br>
+                </div>
+                <div id="shopping-cart-box">
+                    <h3 id="h3Back">Хүргэлт</h3>
+                    <table id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Хэрэглэгчийн ID</th>
+                            </tr>
+                        </thead>
+                        <thead id="carrierTable">
+                        </thead>
+                    </table>
+                </div>
+                    <div id="shopping-cart-box">
+                        <h3 id="h3Back">Хэрэглэгчийн мэдээлэл</h3>
+                        <textarea style="width: 100%;" id="uCartId" placeholder="Хэрэглэгчийн ID-г энд хуулна уу"></textarea>
+                        <button id="deleteCartItem" onclick="deleteCartItem()">Харах</button>
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Зураг</th>
+                                    <th scope="col">Нэр</th>
+                                    <th scope="col">Ширхэг</th>
+                                    <th scope="col">Үнэ</th>
+                                </tr>
+                            </thead>
+                            <thead id="userInformation">
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="shopping-cart-box">
+                        <h3 id="h3Back">Баталгаажуулах</h3>
+                        <button id="deleteCartItem" onclick="doneCartItem()">Баталгаажуулах</button>
+                    </div>
+                    <div id="shopping-cart-box">
+                        <h3 id="h3Back">Хаяг болон утас</h3>
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Нэр</th>
+                                    <th scope="col">Утас</th>
+                                    <th scope="col">Хаяг</th>
+                                </tr>
+                            </thead>
+                            <thead id="userInformation2">
+                            </thead>
+                        </table>
+                    </div>
+                    <div id="shopping-cart-box">
+                        <h3 id="h3Back">Хэрэглэгчийн сагсыг цэвэрлэх</h3>
+                        <button id="deleteCartItem" onclick="clearCartItem()">Цэвэрлэх</button>
+                    </div>
+                    <div id="shopping-cart-box">
+                        <h3 id="h3Back">Бараа management</h3>
+                        <table id="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Зураг</th>
+                                    <th scope="col">Нэр</th>
+                                    <th scope="col">Ширхэг</th>
+                                    <th scope="col">Үнэ</th>
+                                    <th scope="col">Устгах</th>
+                                </tr>
+                            </thead>
+                            <thead id="userInformation3">
+                            </thead>
+                        </table>
+                    </div>
+                    
+            </div>
+            <script src="js/admin.js"></script>
+            <script>
+                var uploader = document.getElementById("uploader");
+                var fileButton = document.getElementById("product-img-admin");
+                var postTitle = document.getElementById("product-title-admin");
+                var postDesc = document.getElementById("product-desc-admin")
+                var postPrice = document.getElementById("product-price-admin");
+                var postAmount = document.getElementById("product-amount-admin");
+                var postDate = document.getElementById("product-date-admin");
+                var fileName;
+                var postId=0;
+                var imageUrl1;
+                var dbRefObject = firebase.database().ref().child("2");
+                fileButton.addEventListener("change",function(e){
+                    var file = e.target.files[0];
+                    fileName = file.name;
+                    var storageRef = firebase.storage().ref("post_photos/" + file.name);
+                    var task = storageRef.put(file);
+                    dbRefObject.orderByValue().on("value", function(snapshot){
+                                        snapshot.forEach(function(data){
+                                            postId = data.key;
+                                        });
+                                        console.log(postId);
+                                    });
+                    task.on("state_changed",
+                            function progress(snapshot){
+                                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                    uploader.value = percentage;
+                                },
+                                function error(err){
+
+                                },
+                                function complete(){
+                                    var storageRef = firebase.storage().ref("post_photos/" + fileName);
+                                    storageRef.getDownloadURL().then(function(imageUrl){ imageUrl1=imageUrl; });
+                            }
+                    );
+                });
+                function uploadPost(){ 
+                    postId++;
+                    var date = postDate.value;
+                    var Title = postTitle.value;
+                    var Desc = postDesc.value;
+                    var Price = postPrice.value;
+                    var Amount = postAmount.value;
+                    console.log(Title);
+                    console.log(Desc);
+                    console.log(date);
+                    console.log(Price);
+                    console.log(Amount);
+                    console.log(imageUrl1);
+                    var databaseRef = firebase.database().ref().child("2");
+                        var postData = {
+                            1: Title,
+                            2: Desc,
+                            3: date,
+                            4: Price,
+                            5: Amount,
+                            6: imageUrl1
+                        };
+                    var task = databaseRef.child(postId).set(postData);
+                    task.on("state_changed",
+                            function progress(snapshot){
+                                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                                    uploader.value = percentage;
+                                },
+                                function error(err){
+
+                                },
+                                function complete(){
+                                    Swal.fire(
+                                    'Good job!',
+                                    'Амжилттай нэмэгдлээ!',
+                                    'success'
+                                    )
+                            }
+                    );
+                    postId=0;
+                }
+            </script>
+            <script>
+                function myFunction() {
+                var x = document.getElementById("nav");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+                }
+            </script>
+            <div id="footer">
+                Developed by Feptkdie Copyright &copy; 2020 FSA24 co.
+            </div>
+        </body>
+</html>

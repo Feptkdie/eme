@@ -1,0 +1,50 @@
+
+<html>
+    <head>
+        <title>EME handmade shop</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css"></link>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-storage.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.8.0/firebase-auth.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+        <body>
+            <div id="nav">
+                <p class="emeText">EME handmade shop</p>
+                <img id="imgEme" src="images/emeLogo.png">
+                <a href="index.html">Дэлгүүр</a>
+                <a href="about.html">Бидний тухай</a>
+                <a href="contact.html">Холбоо барих</a>
+                <a id="user-login" class="uLgn" href="login.html">Нэвтрэх</a>
+                <a id="user-name" class="uName" href="profile.html"></a>
+                <img id="imgUser" src="images/user.png">
+                <a class="uCart" href="cart.html" >Таны сагс</a>
+                <img id="imgCart" src="images/cart.png">
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div id=container>
+                <div id="shopping-cart-box4">
+                    <h3 id="h3Back">EME handmade shop</h3>
+                    <p style="color: rgb(252, 111, 111);">Холбоо барих утас</p>
+                    <p>90446462</p>
+                    <p style="color: rgb(252, 111, 111);">G-mail хаяг</p>
+                    <p>erdenemargad109@gmail.com</p>
+                </div>
+            </div>
+                    
+            <script src="js/profile.js"></script>
+            <script>
+                function myFunction() {
+                var x = document.getElementById("nav");
+                if (x.className === "nav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "nav";
+                }
+                }
+            </script>
+        </body>
+</html>
